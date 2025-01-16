@@ -4,7 +4,7 @@ import { FirstStep } from "@/components/FirstStep";
 import { SecondStep } from "@/components/SecondStep";
 import { ThridStep } from "@/components/ThridStep";
 import { FourthStep } from "@/components/FourthStep";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -21,7 +21,12 @@ export default function Home() {
     lastname: "",
     username: "",
   });
-
+  useEffect(() => {
+    const saveUserInfo = localStorage.getItem("saveUserInfo");
+    if (currentStep == 1) {
+      setFormValue({ ...saveUserInfo });
+    }
+  }, []);
   return (
     <div>
       <Allsteps

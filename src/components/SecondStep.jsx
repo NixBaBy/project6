@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { Input } from "../components/Input";
 import { Button } from "@/components/Button";
+import { useEffect } from "react";
 export const SecondStep = ({
   setCurrentStep,
   currentStep,
@@ -75,6 +76,11 @@ export const SecondStep = ({
     if (!errorHave) {
       setCurrentStep(currentStep + 1);
     }
+    // localStorage.setItem("email", email);
+    // localStorage.setItem("phone", phone);
+    // localStorage.setItem("password", password);
+    // localStorage.setItem("confpassword", confpassword);
+    localStorage.setItem("savedUserInfo", JSON.stringify(formValue));
   };
   return (
     <div className="flex flex-col w-[480px] p-[32px] justify-between items-start  bg-white">
@@ -88,6 +94,7 @@ export const SecondStep = ({
             type={"text"}
             handlerChange={handlerChange}
             error={formError.email}
+            value={formValue.email}
           />
           <Input
             label={"Phone Number"}
@@ -96,6 +103,7 @@ export const SecondStep = ({
             name={"phone"}
             handlerChange={handlerChange}
             error={formError.phone}
+            value={formValue.phone}
           />
           <Input
             label={"Password"}
@@ -104,6 +112,7 @@ export const SecondStep = ({
             type={"password"}
             handlerChange={handlerChange}
             error={formError.password}
+            value={formValue.password}
           />
           <Input
             label={"Confirm Password"}
@@ -112,6 +121,7 @@ export const SecondStep = ({
             name={"confpassword"}
             handlerChange={handlerChange}
             error={formError.confpassword}
+            value={formValue.confpassword}
           />
         </div>
       </div>

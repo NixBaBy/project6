@@ -42,12 +42,29 @@ export const ThridStep = ({
     let errorHave = false;
     const { date, image } = formValue;
 
+    let userDate = new Date(date);
+    let myDate = new Date();
+    let myYear = myDate.getFullYear();
+    let userYear = userDate.getFullYear();
+    let age = myYear - userYear;
+
     if (!date) {
       setFormError((prev) => ({
         ...prev,
         date: "enter your  date",
       }));
 
+      errorHave = true;
+    } else if (
+      age < 18 ||
+      (age === 18) & (myDate.getMonth() + 1 < userDate.getMonth()) ||
+      (myDate.getMonth() + 1 === userDate.getMonth()) &
+        (myDate.getDate() < userDate.getDate())
+    ) {
+      setFormError((prev) => ({
+        ...prev,
+        date: "Ta nasand hureegui bn",
+      }));
       errorHave = true;
     }
     if (!image) {

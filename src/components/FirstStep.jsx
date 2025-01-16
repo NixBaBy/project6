@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Input } from "../components/Input";
 import { Button } from "@/components/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export const FirstStep = ({
   setCurrentStep,
   currentStep,
@@ -46,7 +46,9 @@ export const FirstStep = ({
     if (!errorHave) {
       setCurrentStep(currentStep + 1);
     }
+    localStorage.setItem("saveUserInfo", JSON.stringify(formValue));
   };
+
   return (
     <div className="flex flex-col w-[480px] p-[32px] justify-between items-start h-[655px] bg-white">
       <div className="flex flex-col w-[416px] items-start gap-[28px]">
@@ -59,6 +61,7 @@ export const FirstStep = ({
             name={"firstname"}
             error={formError.firstname}
             handlerChange={handlerChange}
+            value={formValue.firstname}
           />
           <Input
             label={"Last Name"}
@@ -67,6 +70,7 @@ export const FirstStep = ({
             name={"lastname"}
             error={formError.lastname}
             handlerChange={handlerChange}
+            value={formValue.lastname}
           />
           <Input
             label={"User Name"}
@@ -75,6 +79,7 @@ export const FirstStep = ({
             name={"username"}
             error={formError.username}
             handlerChange={handlerChange}
+            value={formValue.username}
           />
         </div>
       </div>
