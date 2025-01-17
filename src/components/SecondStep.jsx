@@ -1,7 +1,8 @@
 import { Header } from "@/components/Header";
 import { Input } from "../components/Input";
 import { Button } from "@/components/Button";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
 export const SecondStep = ({
   setCurrentStep,
   currentStep,
@@ -75,12 +76,10 @@ export const SecondStep = ({
 
     if (!errorHave) {
       setCurrentStep(currentStep + 1);
+      localStorage.setItem("currentstep", 2);
     }
-    // localStorage.setItem("email", email);
-    // localStorage.setItem("phone", phone);
-    // localStorage.setItem("password", password);
-    // localStorage.setItem("confpassword", confpassword);
-    localStorage.setItem("savedUserInfo", JSON.stringify(formValue));
+
+    localStorage.setItem("saveUserInfo", JSON.stringify(formValue));
   };
   return (
     <div className="flex flex-col w-[480px] p-[32px] justify-between items-start  bg-white">

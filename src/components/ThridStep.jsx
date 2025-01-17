@@ -1,7 +1,8 @@
 import { Header } from "@/components/Header";
 import { Input } from "../components/Input";
 import { Button } from "@/components/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 export const ThridStep = ({
   setCurrentStep,
   currentStep,
@@ -78,6 +79,9 @@ export const ThridStep = ({
     if (!errorHave) {
       setCurrentStep(currentStep + 1);
     }
+    console.log(formValue);
+
+    localStorage.setItem("saveUserInfo", JSON.stringify(formValue));
   };
   return (
     <div className="flex flex-col w-[480px] p-[32px] justify-between items-start h-[655px] bg-white">
@@ -89,6 +93,7 @@ export const ThridStep = ({
             name={"date"}
             handlerChange={handlerChange}
             error={formError.date}
+            value={formValue.date}
           />
         </div>
         <div

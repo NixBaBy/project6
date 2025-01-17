@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { Input } from "../components/Input";
 import { Button } from "@/components/Button";
 import { useEffect, useState } from "react";
+
 export const FirstStep = ({
   setCurrentStep,
   currentStep,
@@ -45,6 +46,7 @@ export const FirstStep = ({
 
     if (!errorHave) {
       setCurrentStep(currentStep + 1);
+      localStorage.setItem("currentstep", 1);
     }
     localStorage.setItem("saveUserInfo", JSON.stringify(formValue));
   };

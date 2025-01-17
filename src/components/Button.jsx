@@ -42,7 +42,7 @@ export const Button = ({ setCurrentStep, currentStep, clickHandler }) => {
             className="w-[256px] py-[10px] px-[12px] rounded-[6px] border-[1px] border-[#CBD5E1] border-solid bg-[#121316] text-white flex justify-center align-center gap-[4px]"
             onClick={clickHandler}
           >
-            continue 2/3
+            continue 3/3
             <img src="./arrow.svg" alt="" />
           </button>
         </div>
